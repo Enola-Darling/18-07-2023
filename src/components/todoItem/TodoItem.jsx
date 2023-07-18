@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './TodoItem.module.scss';
 
 const TodoItem = ({ todo, removeTodo }) => {
