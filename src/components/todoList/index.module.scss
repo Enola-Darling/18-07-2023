@@ -1,0 +1,26 @@
+.list {
+    list-style-type: none;
+    padding: 0;
+ 
+  
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      background-color: #638a8b;
+      border-radius: 4px;
+  
+      button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        background-color: #eaeaea;
+        color: #313131;
+        border: none;
+        cursor: pointer;
+        border-radius: 0.2rem;
+      }
+    }
+  }
+  

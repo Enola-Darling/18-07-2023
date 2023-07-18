@@ -1,0 +1,23 @@
+.form {
+    display: flex;
+    margin-bottom: 1rem;
+  
+    input[type='text'] {
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+    }
+  
+    button[type='submit'] {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #2b5c94;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 0.5rem;
+    }
+  }
