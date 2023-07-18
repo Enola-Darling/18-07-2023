@@ -7,7 +7,7 @@ const TodoForm = ({ addTodo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value.trim() !== '') {
+    if (value() !== '') {
       addTodo(value);
       setValue('');
     }
