@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 
 const TodoForm = ({ addTodo }) => {
