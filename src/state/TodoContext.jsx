@@ -10,9 +10,11 @@ const initialState = {
 };
 
 const todoReducer = (state, action) => {
-  switch (action.type) {
+  switch (action.type) 
+  {
     case 'ADD_TODO':
       return {
+        ... state,
         todos: [
           ...state.todos,
           {
@@ -71,7 +73,7 @@ export const TodoProvider = ({ children }) => {
     <TodoContext.Provider value={{ todos: state.todos, addTodo, removeTodo, 
     isLogged: state.isLogged, username: state.username,
     login, logout,}}>
-      {children} 
+    {children} 
     </TodoContext.Provider>
   );
 };
