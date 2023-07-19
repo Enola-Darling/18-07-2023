@@ -5,6 +5,8 @@ export const TodoContext = createContext();
 
 const initialState = {
   todos: mockTodos,
+  isLogged: false,
+  username: '',
 };
 
 const todoReducer = (state, action) => {
@@ -21,8 +23,25 @@ const todoReducer = (state, action) => {
       };
     case 'REMOVE_TODO':
       return {
+        ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
+    case 'SET_LOGIN':
+        return{
+          ...state,
+          isLogged: true,
+        };
+        case 'SET_LOGOUT':
+          return{
+            ...state,
+            isLogged: false,
+            username:'',
+          };
+          case 'SET_USERNAME':
+            return{
+              ...state,
+              username: action.payload,
+            }
     default:
       return state;
   }
@@ -38,10 +57,21 @@ export const TodoProvider = ({ children }) => {
   const removeTodo = (id) => {
     dispatch({ type: 'REMOVE_TODO', payload: id });
   };
+  
+  const login = (username) => {
+    dispatch({ type: 'SET_LOGIN'});
+    dispatch({type:'SET_USERNAME', payload: username});
+  };
+
+  const logout =() => {
+    dispatch ({type: 'SET_LOGOUT'});
+  };
 
   return (
-    <TodoContext.Provider value={{ todos: state.todos, addTodo, removeTodo }}>
-      {children}
+    <TodoContext.Provider value={{ todos: state.todos, addTodo, removeTodo, 
+    isLogged: state.isLogged, username: state.username,
+    login, logout,}}>
+      {children} 
     </TodoContext.Provider>
   );
 };

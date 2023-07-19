@@ -1,28 +1,33 @@
 import { useContext } from 'react'
-import { TodoContext, TodoProvider } from '@/state/TodoContext'
-
+import { TodoContext } from '@/state/TodoContext'
+import Login from '@/components/login'
 import TodoForm from '@/components/todoForm'
 import TodoList from '@/components/todoList'
 
 
 const Home = () => {
-  const { todos, addTodo, removeTodo } = useContext(TodoContext);
+  const { todos, addTodo, removeTodo, 
+  isLogged,username, logout
+   } = useContext(TodoContext);
 
-  return (
+   const handleLogout = () => {
+    logout ();
+   }
+
+   return (
     <div>
-      <h1>Todo List</h1>
-      <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} removeTodo={removeTodo} />
+      {isLogged ? (
+        <>
+          <h1>Logged in as {username}</h1>
+          <button onClick={handleLogout}>Logout</button>
+          <TodoForm addTodo={addTodo} />
+          <TodoList todos={todos} removeTodo={removeTodo} />
+        </>
+      ) : (
+        <Login/>
+      )}
     </div>
   );
 };
 
-const HomePage = () => {
-  return (
-    <TodoProvider>
-      <Home />
-    </TodoProvider>
-  );
-};
-
-export default HomePage;
+export default Home;
