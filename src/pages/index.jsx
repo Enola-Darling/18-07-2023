@@ -18,7 +18,7 @@ const Home = () => {
     <div>
       {isLogged ? (
         <>
-          <h1>Logged in as {username}</h1>
+          <h1>Logged as {username}</h1>
           <button onClick={handleLogout}>Logout</button>
           <TodoForm addTodo={addTodo} />
           <TodoList todos={todos} removeTodo={removeTodo} />
