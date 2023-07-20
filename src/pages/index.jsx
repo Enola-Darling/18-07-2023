@@ -31,3 +31,14 @@ const Home = () => {
 };
 
 export default Home;
+
+
+/*export async function getServerSideProps(context) {
+  const data = [];
+
+  return {
+    props: {
+      data,
+    },
+  };
+}*/

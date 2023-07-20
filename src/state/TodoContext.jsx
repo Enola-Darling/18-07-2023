@@ -1,6 +1,5 @@
 import { createContext, useReducer } from "react";
 import { mockTodos } from "@/mocks/mock";
-
 export const TodoContext = createContext();
 
 const initialState = {
@@ -9,7 +8,7 @@ const initialState = {
   username: '',
 };
 
-const todoReducer = (state, action) => {
+export const todoReducer = (state, action) => {
   switch (action.type) 
   {
     case 'ADD_TODO':
@@ -43,7 +42,9 @@ const todoReducer = (state, action) => {
             return{
               ...state,
               username: action.payload,
+
             }
+          
     default:
       return state;
   }
@@ -55,24 +56,22 @@ export const TodoProvider = ({ children }) => {
   const addTodo = (text) => {
     dispatch({ type: 'ADD_TODO', payload: text });
   };
-
   const removeTodo = (id) => {
     dispatch({ type: 'REMOVE_TODO', payload: id });
   };
-  
   const login = (username) => {
     dispatch({ type: 'SET_LOGIN'});
     dispatch({type:'SET_USERNAME', payload: username});
   };
-
-  const logout =() => {
+  const logout = () => {
     dispatch ({type: 'SET_LOGOUT'});
   };
 
   return (
-    <TodoContext.Provider value={{ todos: state.todos, addTodo, removeTodo, 
-    isLogged: state.isLogged, username: state.username,
-    login, logout,}}>
+    <TodoContext.Provider value={{ todos: state.todos, 
+        addTodo, removeTodo, login, logout,
+        isLogged: state.isLogged, username: state.username,
+    }}>
     {children} 
     </TodoContext.Provider>
   );
